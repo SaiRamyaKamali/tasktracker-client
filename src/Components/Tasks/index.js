@@ -25,7 +25,7 @@ class Tasks extends Component {
 
     onDeleteTask = async (uniqueNo) => {
         try {
-            await axios.delete(`http://localhost:5000/${this.props.username}/tasks/${uniqueNo}`);
+            await axios.delete(`https://super-task-tracker.herokuapp.com/${this.props.username}/tasks/${uniqueNo}`);
             const updatedUserDetailsList = this.props.userDetailsList.filter((task) => task._id !== uniqueNo);
             this.props.onUserDetailsListChange(updatedUserDetailsList);
         } catch (error) {
@@ -36,7 +36,7 @@ class Tasks extends Component {
     onSaveEditedTask = async (editedTask) => {
 
         try {
-            const response = await axios.put(`http://localhost:5000/${this.props.username}/tasks/${editedTask.uniqueNo}`, editedTask);
+            const response = await axios.put(`https://super-task-tracker.herokuapp.com/${this.props.username}/tasks/${editedTask.uniqueNo}`, editedTask);
             const taskEdited = response.data;
 
             const updatedUserDetailsList = this.props.userDetailsList.map(each => {
@@ -59,7 +59,7 @@ class Tasks extends Component {
     onAddNewTask = async (newTask) => {
 
         try {
-            const response = await axios.post(`http://localhost:5000/${this.props.username}/tasks`, newTask);
+            const response = await axios.post(`https://super-task-tracker.herokuapp.com/${this.props.username}/tasks`, newTask);
             this.props.onUserDetailsListChange(response.data);
             this.setState({ isAddTaskVisible: false })
         } catch (error) {
@@ -74,7 +74,7 @@ class Tasks extends Component {
     handleSortByChange = async (event) => {
         try {
             const sortBy = event.target.value; // Get the selected sort option from the dropdown
-            const response = await axios.get(`http://localhost:5000/${this.props.username}/tasks?sortBy=${sortBy}`)
+            const response = await axios.get(`https://super-task-tracker.herokuapp.com/${this.props.username}/tasks?sortBy=${sortBy}`)
             this.props.onUserDetailsListChange(response.data);
         } catch (error) {
             console.error(error);

@@ -31,7 +31,7 @@ class UserDetails extends Component {
     }
     const username = usernameInput.trim();
     try {
-      const response = await axios.get(`http://localhost:5000/${username}/tasks`);
+      const response = await axios.get(`https://super-task-tracker.herokuapp.com/${username}/tasks`);
       const userDetailsList = response.data;
       this.setState({ isUser: true, userDetailsList });
     } catch (error) {
