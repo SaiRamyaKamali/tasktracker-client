@@ -104,7 +104,7 @@ class Tasks extends Component {
 
                     </div>
                     <button className="add-task-button back" onClick={this.onBackClick}>
-                        Back
+                        Log Out
                     </button>
                     {this.state.isAddTaskVisible && (
                         <AddTask onCancelAddTask={this.onCancelAddTask} onAddNewTask={this.onAddNewTask} />
